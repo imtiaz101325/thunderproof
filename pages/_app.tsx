@@ -8,6 +8,7 @@ import { useState } from "react";
 import DarkModeSwitch from "../components/DarkModeSwitch";
 
 import { dark, light } from "../theme";
+import { devices } from "../utils";
 
 const roboto = Roboto_Flex({
   subsets: ["latin"],
@@ -22,13 +23,6 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Container = styled.main`
-  min-height: 100vh;
-  min-width: 100vw;
-  background-color: ${(props) => props.theme.colors.background};
-  transition: background-color 0.5s ease-out;
-`;
-
 const Navbar = styled.nav`
   background-color: ${(props) => props.theme.colors.background};
   transition: background-color 0.5s ease-out;
@@ -41,7 +35,22 @@ const NavbarContent = styled.div`
   align-items: center;
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0 2em;
 `;
+
+const Container = styled.main`
+  min-height: 100vh;
+  background-color: ${(props) => props.theme.colors.background};
+  transition: background-color 0.5s ease-out;
+  padding: 0 2em;
+`;
+
+const Footer = styled.footer`
+  min-height: 4em;
+  background-color: ${(props) => props.theme.colors.background};
+  transition: background-color 0.5s ease-out;
+`;
+
 
 export default function App({ Component, pageProps }: AppProps) {
   const [darkMode, setDarkMode] = useState(true);
@@ -69,7 +78,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </Container>
 
-        <footer></footer>
+        <Footer></Footer>
       </ThemeProvider>
     </>
   );
